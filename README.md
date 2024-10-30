@@ -1,2 +1,2 @@
-# consolewither
-ConsoleWither
+# Console Wither on C# 
+ This project presents the implementation of a mini RPG based on The Witcher. The project uses ASKII translation of photographs in different formats, as well as knowledge on the correct presentation of tables in this project as a map. For full implementation, the combat system needs to be improved; the one presented in the project is not ideal, but it’s perfect for a simple project.
