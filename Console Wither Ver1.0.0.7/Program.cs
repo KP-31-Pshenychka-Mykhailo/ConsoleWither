@@ -17,25 +17,25 @@ namespace Console_Wither_Ver1._0._0._7
         class Program
         {
             private const double WIDTH_OFFSET = 1.5;
-            // Константа для зміщення ширини
+            
             static char[,] map = new char[100, 100];
-            // Оголошення двовимірного масиву для карти гри
-            static int playerRow = 50; // Начальне положення персонажа
+          
+            static int playerRow = 50; 
                                        
             static int playerCol = 50;
-            // Початкове положення гравця по стовпцю
+            
 
-            // Розмір видимої області на карті
+            
             static Random random = new Random();
-            // Ініціалізація випадкового генератора
+           
 
-            // Початкове здоров'я гравця, отримане з іншого класу
+            
             static int selectedMonsterIndex = 0;
-            // Індекс вибраного монстра
+         
             static object lockObject = new object();
-            // Об'єкт блокування для синхронізації потоків
+           
             static bool isGameplayActive = true;
-            // Змінна, яка вказує, чи активний геймплей
+      
 
 
 
@@ -45,7 +45,7 @@ namespace Console_Wither_Ver1._0._0._7
                 Console.InputEncoding = Encoding.Unicode;
                 Console.OutputEncoding = Encoding.Unicode;
 
-                string imageFirst = "imgonline-com-ua-Resize-t3ryHmtWWW.jpg";
+                string imageFirst = "NameOfImage";
                 int time = 3200;
                 DataProgram.StartGameData();
                 Draw(imageFirst, time);
@@ -61,11 +61,11 @@ namespace Console_Wither_Ver1._0._0._7
 
                 if (File.Exists(DataProgram.DataFile))
                 {
-                    menuItemsStart = "Продовжити"; // Файл существует
+                    menuItemsStart = "continue"; 
                 }
                 else
                 {
-                    menuItemsStart = "Почати"; // Файл не существует
+                    menuItemsStart = "Start"; 
                 }
 
 
@@ -74,7 +74,7 @@ namespace Console_Wither_Ver1._0._0._7
 
 
 
-                string[] menuItems = { $"{menuItemsStart}", "Налаштування", "Вийти" };
+                string[] menuItems = { $"{menuItemsStart}", "Settings", "Exit" };
                 int selectedItemIndex = 0;
 
                 Console.CursorVisible = false;
@@ -102,7 +102,7 @@ namespace Console_Wither_Ver1._0._0._7
                             Console.WriteLine("\n...");
                             Thread.Sleep(1500);
                             Console.Clear();
-                            string imageLoader = "imgonline-com-ua-Resize-tXyFWUDFC7tSY.jpg";
+                            string imageLoader = "NameOfImage";
                             int time = 4000;
                             Draw(imageLoader, time);
                             Console.Clear();
@@ -124,7 +124,7 @@ namespace Console_Wither_Ver1._0._0._7
                         }
                         else if (selectedItemIndex == 2)
                         {
-                            Console.WriteLine("\nВихід з гри...");
+                            Console.WriteLine("\nExit from game...");
                             Thread.Sleep(100);
                             DataProgram.SaveData();
                             Environment.Exit(0);
@@ -137,20 +137,20 @@ namespace Console_Wither_Ver1._0._0._7
             static void Settings()
             {
                 Console.Clear();
-                Console.WriteLine("Дальність бачності (max = 20) Введіть:");
+                Console.WriteLine("Visibility range (max = 20) Enter:");
                 int sizeOfAreaSettings = Convert.ToInt32(Console.ReadLine());
                 if (sizeOfAreaSettings <= 20)
                 {
                     DataProgram.VisiableArea = sizeOfAreaSettings;
                     DataProgram.VisiableArea = DataProgram.VisiableArea;
                     DataProgram.SaveData();
-                    Console.WriteLine($"Тепер дальність прорисовки : {DataProgram.VisiableArea}");
+                    Console.WriteLine($"Now the drawing range: {DataProgram.VisiableArea}");
                     Thread.Sleep(2000);
                     ShowMenu();
                 }
                 else
                 {
-                    Console.WriteLine("Введіть менше , а то буде бавовна ");
+                    Console.WriteLine("Enter less, and it will be cotton");
                     Thread.Sleep(2000);
                     Settings();
                 }
@@ -184,7 +184,7 @@ namespace Console_Wither_Ver1._0._0._7
             {
 
 
-                var defaultImagePath = $"C:\\Users\\mishk\\OneDrive\\Рабочий стол\\Завантажувальник\\foto\\{nameOfPicture}";
+                var defaultImagePath = $"LinkOnPath{nameOfPicture}";
                 var numberzero = 0;
 
                 var openFileDialog = new OpenFileDialog
@@ -225,7 +225,7 @@ namespace Console_Wither_Ver1._0._0._7
             }
             static void InitializeMap()
             {
-                // Инициализация карты
+                
                 for (int i = 0; i < 100; i++)
                 {
                     for (int j = 0; j < 100; j++)
@@ -234,62 +234,62 @@ namespace Console_Wither_Ver1._0._0._7
                     }
                 }
 
-                // Добавляем дома
+                
                 PlaceHouse(10, 10);
                 PlaceHouse(10, 85);
                 PlaceHouse(85, 10);
                 PlaceHouse(85, 85);
 
-                // Добавляем реку
+              
                 for (int i = 0; i < 100; i++)
                 {
-                    map[i, i] = '≈'; // Символ реки
+                    map[i, i] = '≈'; 
                     if (i + 1 < 100)
                         map[i + 1, i] = '≈';
                 }
 
-                // Добавляем мосты
+                
                 for (int i = 1; i <= 3; i++)
                 {
                     int bridgePosition = i * 25;
                     for (int j = bridgePosition - 2; j <= bridgePosition + 2; j++)
                     {
-                        map[j, j] = '═'; // Символ моста
+                        map[j, j] = '═'; 
                         if (j + 1 < 100)
                             map[j + 1, j] = '═';
                     }
                 }
 
-                // Добавляем тропинки
+              
                 for (int i = 0; i < 100; i += 10)
                 {
                     for (int j = 0; j < 100; j++)
                     {
                         if (map[i, j] == '█')
                         {
-                            map[i, j] = '░'; // Тропинка
+                            map[i, j] = '░'; 
                         }
                     }
                 }
 
-                // Добавляем траву
+                
                 for (int i = 0; i < 100; i++)
                 {
                     for (int j = 0; j < 100; j++)
                     {
                         if (map[i, j] == '█')
                         {
-                            map[i, j] = '▒'; // Трава
+                            map[i, j] = '▒';
                         }
                     }
                 }
 
-                // Помечаем секции
+               
                 map[5, 5] = '1';
                 map[5, 15] = '2';
                 map[15, 5] = '3';
 
-                // Устанавливаем персонажа в центр
+                
                 map[playerRow, playerCol] = '*';
             }
             static void PlaceHouse(int row, int col)
@@ -298,7 +298,7 @@ namespace Console_Wither_Ver1._0._0._7
                 {
                     for (int j = col; j < col + 5; j++)
                     {
-                        map[i, j] = 'H'; // Символ дома
+                        map[i, j] = 'H'; 
                     }
                 }
             }
@@ -306,7 +306,7 @@ namespace Console_Wither_Ver1._0._0._7
             {
                 lock (lockObject)
                 {
-                    map[sectionRow, sectionCol] = '░'; // Оставляем тропинку за перемещением
+                    map[sectionRow, sectionCol] = '░'; 
                     int newRow = (sectionRow + 1) % 100;
                     int newCol = (sectionCol + 1) % 100;
 
@@ -362,7 +362,7 @@ namespace Console_Wither_Ver1._0._0._7
                                 if (i == playerRow && j == playerCol)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Yellow;
-                                    Console.Write("* "); // Визуальное отображение персонажа
+                                    Console.Write("* "); //gamer
                                 }
                                 else
                                 {
@@ -395,7 +395,7 @@ namespace Console_Wither_Ver1._0._0._7
                             else
                             {
                                 Console.SetCursorPosition(offsetX + (j - (playerCol - DataProgram.VisiableArea / 2)) * 2, offsetY + (i - (playerRow - DataProgram.VisiableArea / 2)));
-                                // Если координаты за пределами карты, отображаем пустое пространство
+                                
                                 Console.Write("  ");
                             }
                         }
@@ -425,7 +425,7 @@ namespace Console_Wither_Ver1._0._0._7
                             lock (lockObject)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Це ворог !!!! \n Нападай !!");
+                                Console.WriteLine("This is the enemy!!!! \n Attack !!");
                             }
                             Thread.Sleep(3000);
                             Fight();
@@ -495,18 +495,18 @@ namespace Console_Wither_Ver1._0._0._7
                 {
                     case "Зілля здоров'я":
                         DataProgram.Health += 50;
-                        Console.WriteLine("Здоров'я збільшено на 50.");
+                        Console.WriteLine("Health increased by 50.");
 
                         DataProgram.SaveData();
                         break;
                     case "Зілля магії":
                         DataProgram.Magic *= 2;
-                        Console.WriteLine("Магія збільшена у 2 рази.");
+                        Console.WriteLine("Magic is increased by 2 times.");
                         DataProgram.Magic = DataProgram.Magic;
                         DataProgram.SaveData();
                         break;
                     default:
-                        Console.WriteLine("Нема такого.");
+                        Console.WriteLine("There is no such thing.");
                         break;
                 }
             }
@@ -514,33 +514,33 @@ namespace Console_Wither_Ver1._0._0._7
             {
                 Dictionary<string, Dictionary<string, string>> equipment = new Dictionary<string, Dictionary<string, string>>
         {
-            {"Спорядження", new Dictionary<string, string>
+            {"Equipment", new Dictionary<string, string>
                 {
-                    {"Щит", "Захист: +10"},
-                    {"Броня", "Захист: +20"},
-                    {"Мантія", "Захист: +15"}
+                    {"Shield", "Defense: +10"},
+                    {"Armor", "Defense: +20"},
+                    {"Mantle", "Defense: +15"}
                 }
             },
-            {"Зброя", new Dictionary<string, string>
+            {"Weapon", new Dictionary<string, string>
                 {
-                    {"Меч", "Урон: +20"},
-                    {"Лук", "Урон: +15"},
-                    {"Срібний меч", "Урон: +10"}
+                    {"Sword", "Damage: +20"},
+                    {"Bow", "Damage: +15"},
+                    {"Silver Sword", "Damage: +10"}
                 }
             },
-            {"Зілля", new Dictionary<string, string>
+            {"Potion", new Dictionary<string, string>
                 {
-                    {"Зілля здоров'я", "Відновлює 50 HP"},
-                    {"Зілля магії", "Збільшує магію у 2 рази"}
+                    {"Health Potion", "Restores 50 HP"},
+                    {"Potion of Magic", "Increases magic by 2 times"}
                 }
             }
         };
 
-                string[] categories = { "Спорядження", "Зброя", "Зілля" };
+                string[] categories = { "Equipment", "Weapons", "Potions" };
                 while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine($"Здоров'я :{DataProgram.Health} Магія:{DataProgram.Magic} XP:{DataProgram.XP} Крони: {DataProgram.Cash}");
+                    Console.WriteLine($"Health :{DataProgram.Health} Magic:{DataProgram.Magic} XP:{DataProgram.XP} Crowns: {DataProgram.Cash}");
                     Console.WriteLine("Оберіть категорію:");
 
                     for (int i = 0; i < categories.Length; i++)
@@ -548,12 +548,12 @@ namespace Console_Wither_Ver1._0._0._7
                         Console.WriteLine($"{i + 1}. {categories[i]}");
                     }
 
-                    Console.WriteLine("0. Вихід");
+                    Console.WriteLine("0. Exit");
 
                     int choice;
                     if (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > categories.Length)
                     {
-                        Console.WriteLine("Некоректне значення. Спробуйте ще раз");
+                        Console.WriteLine("Invalid value. Try again");
                         Console.ReadLine();
                         continue;
                     }
@@ -563,11 +563,11 @@ namespace Console_Wither_Ver1._0._0._7
 
                     string category = categories[choice - 1];
                     Console.Clear();
-                    Console.WriteLine($"Обрана категорія: {category}\n");
+                    Console.WriteLine($"Selected category: {category}\n");
 
-                    if (category == "Зілля")
+                    if (category == "Potion")
                     {
-                        Console.WriteLine("Оберіть зілля:");
+                        Console.WriteLine("Choose a potion:");
 
                         int index = 1;
                         foreach (var item in equipment[category])
@@ -579,7 +579,7 @@ namespace Console_Wither_Ver1._0._0._7
                         int potionChoice;
                         if (!int.TryParse(Console.ReadLine(), out potionChoice) || potionChoice < 1 || potionChoice > equipment[category].Count)
                         {
-                            Console.WriteLine("Некоректне значення. Спробуйте ще раз");
+                            Console.WriteLine("Invalid value. Try again");
                             Console.ReadLine();
                             continue;
                         }
@@ -596,7 +596,7 @@ namespace Console_Wither_Ver1._0._0._7
                         }
                     }
 
-                    Console.WriteLine("\nНатисніть будя-яку клавішу для продовження");
+                    Console.WriteLine("\nPress any key to continue");
                     Console.ReadKey();
                 }
             }
@@ -616,7 +616,7 @@ namespace Console_Wither_Ver1._0._0._7
             static void ShowMonsters(List<Monster> monsters)
             {
                 Console.Clear();
-                Console.WriteLine("На вас нападають монстри ! Будьте готові до бою!");
+                Console.WriteLine("Monsters are attacking you! Be ready for battle!");
 
                 for (int i = 0; i < monsters.Count; i++)
                 {
@@ -624,20 +624,20 @@ namespace Console_Wither_Ver1._0._0._7
                     {
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.ForegroundColor = ConsoleColor.Black;
-                        Console.WriteLine($"\nМонстр {i + 1}: Життя: {monsters[i].Health}");
+                        Console.WriteLine($"\nMonster {i + 1}: Health: {monsters[i].Health}");
                         Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine($"\nМонстр {i + 1}: Життя: {monsters[i].Health}");
+                        Console.WriteLine($"\nMonster {i + 1}: Health: {monsters[i].Health}");
                     }
                 }
             }
             static void ShowAttackCards()
             {
-                Console.WriteLine("1. Атака (наносить 3 урона)");
-                Console.WriteLine("2. Магія (наносить 5 урона)");
-                Console.WriteLine("3. Сильна атака (наносить 8 урона)");
+                Console.WriteLine("1. Attack (does 3 damage)");
+                Console.WriteLine("2. Magic (deals 5 damage)");
+                Console.WriteLine("3. Strong attack (does 8 damage)");
             }
             static int GetAttackDamage(int attack)
             {
@@ -646,7 +646,7 @@ namespace Console_Wither_Ver1._0._0._7
 
                 while (choice < 1 || choice > 3)
                 {
-                    Console.Write("Оберіть атакуючу карту (1-3): ");
+                    Console.Write("Choose an attacking card (1-3): ");
                     int.TryParse(Console.ReadLine(), out choice);
                 }
 
@@ -694,12 +694,12 @@ namespace Console_Wither_Ver1._0._0._7
                     while (true)
                     {
                         List<Monster> monsters = GenerateMonsters();
-                        Console.WriteLine("На вас нападають монстри ! Будьте готові до бою!");
+                        Console.WriteLine("Monsters are attacking you! Be ready for battle!");
                         int fictiveNum = 0;
                         while (DataProgram.Health > 0 && monsters.Count > 0)
                         {
                             ShowMonsters(monsters);
-                            Console.WriteLine($"\nВаші життя: {DataProgram.Health} \nВаша магія : {DataProgram.Magic}");
+                            Console.WriteLine($"\nYour Lives: {DataProgram.Health} \nYour Magic: {DataProgram.Magic}");
 
                             ConsoleKeyInfo keyInfo;
                             do
@@ -714,29 +714,29 @@ namespace Console_Wither_Ver1._0._0._7
                                     selectedMonsterIndex++;
                                 }
                                 ShowMonsters(monsters);
-                                Console.WriteLine($"\nВаші життя: {DataProgram.Health} \nВаша магія : {DataProgram.Magic}");
+                                Console.WriteLine($"\nYour Lives: {DataProgram.Health} \nYour Magic: {DataProgram.Magic}");
                             } while (keyInfo.Key != ConsoleKey.Enter);
 
                             Monster selectedMonster = monsters[selectedMonsterIndex];
 
-                            Console.WriteLine($"\nВи обрали монстра {selectedMonsterIndex + 1}! Життя обраного монстра: {selectedMonster.Health}");
+                            Console.WriteLine($"\nYou have selected the monster {selectedMonsterIndex + 1}! Health of selected monster: {selectedMonster.Health}");
 
-                            Console.WriteLine("\nВаші атакуючі карты:");
+                            Console.WriteLine("\nYour attacking cards:");
                             ShowAttackCards();
 
                             int attackDamage = GetAttackDamage(fictiveNum);
                             selectedMonster.TakeDamage(attackDamage);
 
-                            Console.WriteLine($"Ви нанесли монстру {attackDamage} урона! Життя монстра: {selectedMonster.Health}");
+                            Console.WriteLine($"You dealt {attackDamage} damage to the monster! Monster Health: {selectedMonster.Health}");
 
                             if (selectedMonster.Health <= 0)
                             {
-                                Console.WriteLine("Монстр переможен! Переходимо до наступного...");
+                                Console.WriteLine("The monster is defeated! Let's move on to the next...");
                                 DataProgram.XP++;
                                 monsters.RemoveAt(selectedMonsterIndex);
                                 if (monsters.Count == 0)
                                 {
-                                    Console.WriteLine("\nВітаю! Вы перемогли усіх монстрів!");
+                                    Console.WriteLine("\nCongratulations! You have defeated all the monsters!");
 
                                     DataProgram.Cash += 20;
                                     DataProgram.Magic = 15;
@@ -749,21 +749,21 @@ namespace Console_Wither_Ver1._0._0._7
                                     {
                                         selectedMonsterIndex = monsters.Count - 1;
                                     }
-                                    Console.WriteLine("\nОберіть наступного монстра.");
+                                    Console.WriteLine("\nChoose the next monster.");
                                 }
                             }
                             else
                             {
                                 int monsterAttack = random.Next(1, 11);
                                 DataProgram.Health -= monsterAttack;
-                                Console.WriteLine($"Монстр атакує у відповідь и наносить вам {monsterAttack} урона!");
+                                Console.WriteLine($"The monster attacks back and deals {monsterAttack} damage to you!");
                                 
                                 
                                 Thread.Sleep(3000);
 
                                 if (DataProgram.Health <= 0)
                                 {
-                                    Console.WriteLine("\nВи проиграли! Гра завершена.");
+                                    Console.WriteLine("\nYou lost! Game over.");
                                     DataProgram.SaveData();
                                     ShowMenu();
 
