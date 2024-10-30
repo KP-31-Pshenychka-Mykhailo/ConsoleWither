@@ -1,0 +1,14 @@
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\bin\Debug\Console Wither Ver1.0.0.7.exe.config
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\bin\Debug\Console Wither Ver1.0.0.7.exe
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\bin\Debug\Console Wither Ver1.0.0.7.pdb
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.csproj.AssemblyReference.cache
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.csproj.CoreCompileInputs.cache
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.exe
+C:\Users\mishk\OneDrive\Рабочий стол\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.pdb
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\bin\Debug\Console Wither Ver1.0.0.7.exe.config
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\bin\Debug\Console Wither Ver1.0.0.7.exe
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\bin\Debug\Console Wither Ver1.0.0.7.pdb
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.csproj.AssemblyReference.cache
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.csproj.CoreCompileInputs.cache
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.exe
+Z:\Desktop\Console Wither Ver1.0.0.7\Console Wither Ver1.0.0.7\obj\Debug\Console Wither Ver1.0.0.7.pdb
